@@ -1,0 +1,11 @@
+1º Para criar o projeto, abrir o MS-DOS, entrar na pasta onde ficará o projeto e dar o seguinte comando: "ng new {NomeDoProjeto}", colocar sim para routing e selecionar a opção CSS.
+
+2º Instalar o bootstrap específico do angular através do site: https://ng-bootstrap.github.io/#/getting-started
+
+3º Para validações de formulários, instalar o pacote: npm i ngx-custom-validators (Validador de formulário customizado)
+
+4º Registrar a biblioteca no módulo de contas: CustomFormsModule
+
+5º Instalar a biblioteca toastr: 
+   npm install ngx-toastr --save
+   npm install @angular/animations --save
