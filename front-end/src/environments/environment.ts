@@ -5,7 +5,7 @@
 export const environment = {
   
   production: false,
-  UrlServiceV1: 'http://localhost:64818/api/v1/'
+  UrlServiceV1: 'http://localhost:64817/api/v1/'
 };
 
 /*

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContaAppComponent } from './conta.app.component';
 import { ContaService } from './services/conta.service';
 import { CustomFormsModule } from 'ngx-custom-validators';
+import { ContaGuard } from './services/conta.guard';
 
 
 @NgModule({
@@ -22,6 +23,6 @@ import { CustomFormsModule } from 'ngx-custom-validators';
     HttpClientModule,
     CustomFormsModule
   ],
-  providers: [ContaService]
+  providers: [ContaService, ContaGuard]
 })
 export class ContaModule { }

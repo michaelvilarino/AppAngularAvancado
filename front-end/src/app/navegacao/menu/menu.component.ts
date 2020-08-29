@@ -10,6 +10,8 @@ export class MenuComponent {
 
     public isCollapsed: Boolean;
 
+    mostrarFornecedor:boolean = true;
+
     constructor(){
         this.isCollapsed = true;
     }

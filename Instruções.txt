@@ -9,3 +9,11 @@
 5º Instalar a biblioteca toastr: 
    npm install ngx-toastr --save
    npm install @angular/animations --save
+
+6º Instalar o NG-Brazil para colocar validações de cpf, rg e mascaras: 
+   npm i ng-brazil
+   npm i -S angular2-text-mask text-mask-addons
+
+7º Para trabalhar com modal, importar a biblioteca: NgbModal
+
+8º Para trabalhar com spinner (load de tela), instalar o pacote: NgxSpinner / Comando: npm i ngx-spinner

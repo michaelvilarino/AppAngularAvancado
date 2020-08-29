@@ -22,9 +22,15 @@ import { BaseService } from 'src/app/services/base.service';
                  return response;
     }
 
-    login(usuario: Usuario){
+    login(usuario: Usuario):Observable<Usuario>{
 
-        
+      let response = this.http.post(this.UrlServiceV1 + 'entrar', usuario, this.ObterHeaderJson())
+      .pipe(
+         map(this.ExtractData),
+         catchError(this.ServiceError)
+      );
+
+      return response;
     }
 
  }   
