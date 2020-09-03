@@ -14,6 +14,7 @@ import {utilsBr} from 'js-brasil';
 import { NgBrazilValidators } from 'ng-brazil';
 import { CepConsulta } from '../models/endereco';
 import { StringUtils } from 'src/app/utils/stringUtils';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-novo',
@@ -42,7 +43,8 @@ export class NovoComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private fornecedorService: FornecedorService,
     private router: Router,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService) {
 
     this.validationMessages = {
       nome: {
@@ -179,6 +181,9 @@ export class NovoComponent implements OnInit {
 
    adicionarFornecedor() {
     if (this.fornecedorForm.dirty && this.fornecedorForm.valid) {
+
+      this.spinner.show();
+
       this.fornecedor = Object.assign({}, this.fornecedor, this.fornecedorForm.value);
       this.formResult = JSON.stringify(this.fornecedor);
 
@@ -190,14 +195,18 @@ export class NovoComponent implements OnInit {
           sucesso => { this.processarSucesso(sucesso) },
           falha => { this.processarFalha(falha) }
         );
-
-      this.mudancasNaoSalvas = false;
+        
+        setTimeout(() => {      
+          this.spinner.hide();
+        }, 3000);
     }
   }
 
   processarSucesso(response: any) {
     this.fornecedorForm.reset();
     this.errors = [];
+
+    this.mudancasNaoSalvas = false;
 
     let toast = this.toastr.success('Fornecedor cadastrado com sucesso!', 'Sucesso!');
     if (toast) {

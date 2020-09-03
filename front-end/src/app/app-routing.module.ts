@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './navegacao/home/home.component';
 import { NotFoundComponent } from './navegacao/not-found/not-found.component';
+import { AcessoNegadoComponent } from './navegacao/acesso-negado/acesso-negado.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
       loadChildren: () => import('./fornecedor/fornecedor.module')
         .then(m => m.FornecedorModule)
     },
+    { path: 'acesso-negado', component: AcessoNegadoComponent },
     { path: 'nao-encontrado', component: NotFoundComponent},
     { path:'**', component: NotFoundComponent}
 ];
