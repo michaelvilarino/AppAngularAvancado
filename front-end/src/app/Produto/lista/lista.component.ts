@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ListaComponent implements OnInit {
 
+  caminhoImagens = environment.imagemUrl;
+
   public produtos: Produto[];
   errorMessage: string;
 

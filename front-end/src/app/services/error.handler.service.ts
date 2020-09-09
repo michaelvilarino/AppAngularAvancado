@@ -22,8 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
                             if(error.status === 401){
                                 this.localStorageUtils.limparDadosLocaisUsuario();
-                                this.router.navigate(['/conta/login']);
-                                console.log("Não autorizado");
+                                this.router.navigate(['/conta/login'], {queryParams : {returnUrl: this.router.url}});                                
                             }
 
                             if(error.status === 403){

@@ -33,6 +33,9 @@ export class EditarComponent implements OnInit {
   formResult: string = '';
 
   mudancasNaoSalvas: boolean;
+  imagemNome: any;
+  imageBase64: string;
+  imagePreview: string;
 
   constructor(private fb: FormBuilder,
     private produtoService: ProdutoService,
@@ -131,5 +134,20 @@ export class EditarComponent implements OnInit {
     this.errors = fail.error.errors;
     this.toastr.error('Ocorreu um erro!', 'Opa :(');
   } 
+
+  upload(file:any){
+    this.imagemNome = file[0].name;
+
+    var reader = new FileReader();
+    reader.onload = this.manipularReader.bind(this);
+    reader.readAsBinaryString(file[0]);
+  }
+
+  manipularReader(readerEvt: any){
+    var binario = readerEvt.target.result;
+
+    this.imageBase64 = btoa(binario);
+    this.imagePreview = "data:image/jpeg;base64,"+ this.imageBase64;
+  }
 }
 

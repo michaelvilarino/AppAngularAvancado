@@ -5,7 +5,7 @@ import { ContaService } from '../services/conta.service';
 import { ValidationMessages, GenericValidator, DisplayMessage } from 'src/app/utils/generic-form-validation';
 import { CustomValidators } from 'ngx-custom-validators';
 import { Observable, fromEvent, merge } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 import { MessageHelper } from 'src/app/utils/generic-messages';
@@ -28,10 +28,12 @@ export class LoginComponent implements OnInit {
   displayMessage: DisplayMessage = {};
   messageHelper:  MessageHelper;
   
+  returnUrl:string;
 
   constructor(private fb: FormBuilder,
               private contaService: ContaService,
               private router: Router,
+              private route: ActivatedRoute,//tem toda a rastreabilidade da rota atual
               private toastr: ToastrService
              ) { 
 
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
                 }
              };
 
+             this.returnUrl = this.route.snapshot.queryParams['returnUrl'];             
              this.genericValidator = new GenericValidator(this.validationMessages);
 
              }
@@ -88,7 +91,10 @@ export class LoginComponent implements OnInit {
 
        this.contaService.localStorage.salvarDadosLocaisUsuario(response);
        this.messageHelper.msgSucesso('Logado com sucesso', 'Bem vindo(a)', () => {
-         this.router.navigate(['/home']);
+         if(this.returnUrl)
+            this.router.navigate([this.returnUrl]);
+         else
+            this.router.navigate(['/home']);
        });
        
   }

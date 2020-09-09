@@ -37,7 +37,7 @@ const produtoRouterConfig: Routes = [
             {
                 path: 'excluir/:id', component: ExcluirComponent,
                 canActivate: [ProdutoGuard],
-                data: [{ claim: { nome: 'Produto', valor: 'Excluir' } }],
+                data: [{ claim: { nome: 'Produto', valor: 'Remover' } }],
                 resolve: {
                     produto: ProdutoResolve
                 }

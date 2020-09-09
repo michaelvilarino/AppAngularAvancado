@@ -5,7 +5,8 @@
 export const environment = {
   
   production: false,
-  UrlServiceV1: 'http://localhost:64818/api/v1/'
+  UrlServiceV1: 'http://localhost:64818/api/v1/',
+  imagemUrl: 'http://localhost:64818/'
 };
 
 /*

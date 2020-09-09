@@ -17,3 +17,45 @@
 7º Para trabalhar com modal, importar a biblioteca: NgbModal
 
 8º Para trabalhar com spinner (load de tela), instalar o pacote: NgxSpinner / Comando: npm i ngx-spinner
+
+9º Instalar o image cropper para manipulação de imagens: npm install ngx-image-cropper --save
+
+10º Meios de hospedagem para o projeto angular:
+    NGINX.com - É free (Usado por usuários que não possuem o windows)
+    IIS
+   
+11º Para publicar em algum ambiente IIS, gerar os arquivos de produção utilizando o seguinte comando no terminal do VsCode: 
+    ng b --prod
+
+12º Se publicar no IIS, adicionar um arquivo web.config com esse trecho de código para poder entender as rotas:
+
+<?xml version="1.0" enconding="utf-8" ?>
+<configuration>
+  <system.webServer>
+     <rewrite>
+	    <rules>
+		    <rule name="Angular" stopProcessing="true">
+			   <match url=".*"/>
+			   <conditions logicalGrouping="MatchAll">
+			      <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true"/>
+				  <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true"/>
+			   </conditions>
+			   <action type="Rewrite" url="/"/>
+			</rule>
+		</rules>
+	 </rewrite>
+  </system.webServer>
+</configuration>
+
+13º Se for usar docker, utilizar o portainer.io para gerenciar os containers
+
+14º Para levar a aplicação angular para o docker, criar um arquivo dentro do projeto na pasta raiz chamado DockerFile sem extensão.
+
+15º Criar um arquivo chamado nginx.conf
+
+16º Rodar o seguinte comando no terminal para gerar a imagem do container: "docker build -t nomeAPP ."
+
+17º Depois de criar a imagem, é preciso de um comando para rodar a aplicação no docker: 
+    "docker run --name nomeApp -d -p 8080:80 nomeApp"
+
+18º Para atualizar o container, ele precisa ser parado, e na aplicação no qual onde foi gerado o mesmo, rodar o seguinte comando no terminal: "docker build -t nomeAPP ." E depois rodar novamente o o seguinte comando para a aplicação subir no container: "docker run --name nomeApp -d -p 8080:80 nomeApp"

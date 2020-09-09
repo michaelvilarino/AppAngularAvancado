@@ -31,7 +31,7 @@
         <tbody>
             <tr *ngFor="let produto of produtos">
                 <td>
-                    <img src="{{ produto.imagem }}" style="width: 70px; height: 100px">
+                    <img src="{{caminhoImagens}}{{ produto.imagem }}" style="width: 70px; height: 100px">
                 </td>
                 <td>
                     {{ produto.nome }}
@@ -49,9 +49,9 @@
                     <a class="btn btn-warning" [routerLink]="['/produtos/detalhes',produto.id]">
                         <span class="fa fa-search"></span>
                     </a>&nbsp;
-                    <a class="btn btn-info" [routerLink]="['/produtos/editar',produto.id]">
+                    <!-- <a class="btn btn-info" [routerLink]="['/produtos/editar',produto.id]">
                         <span class="fa fa-pencil-alt"></span>
-                    </a>&nbsp;
+                    </a>&nbsp; -->
                     <a class="btn btn-danger" [routerLink]="['/produtos/excluir',produto.id]">
                         <span class="fa fa-trash"></span>
                     </a>

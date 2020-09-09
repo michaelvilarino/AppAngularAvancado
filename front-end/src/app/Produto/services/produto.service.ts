@@ -42,7 +42,7 @@ export class ProdutoService extends BaseService {
 
     excluirProduto(id: string): Observable<Produto> {
         return this.http
-            .delete(this.UrlServiceV1 + "produtos/" + id, super.ObterAuthHeaderJson())
+            .delete(this.UrlServiceV1 + "produtos/excluir/" + id, super.ObterAuthHeaderJson())
             .pipe(
                 map(super.ExtractData),
                 catchError(super.ServiceError));
